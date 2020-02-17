@@ -6,7 +6,7 @@
 /*   By: aroque <aroque@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 11:12:57 by aroque            #+#    #+#             */
-/*   Updated: 2020/02/14 11:38:40 by aroque           ###   ########.fr       */
+/*   Updated: 2020/02/16 21:32:40 by aroque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+
+# define LBREAK	'\n'
 
 int	get_next_line(int fd, char **line);
 
