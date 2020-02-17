@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aroque <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/16 19:30:38 by aroque            #+#    #+#             */
+/*   Updated: 2020/02/16 21:32:42 by aroque           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -13,7 +25,6 @@ int	main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		file = open(argv[1], O_RDONLY);
-		line = malloc(BUFFER_SIZE + 1);
 		printf("File: %d\n", file);
 		gnl = get_next_line(file, &line);
 		printf("Retorno: %d\n", gnl);
