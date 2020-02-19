@@ -6,19 +6,41 @@
 /*   By: aroque <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 21:30:01 by aroque            #+#    #+#             */
-/*   Updated: 2020/02/17 18:15:47 by aroque           ###   ########.fr       */
+/*   Updated: 2020/02/19 16:12:32 by aroque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <string.h>
-#include <stdio.h>
 
 size_t	ft_strlen(const char *s)
 {
 	if (!*s)
 		return (0);
 	return (ft_strlen(++s) + 1);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	if (*s == (char)c)
+		return ((char *)s);
+	else if (!*s)
+		return (0);
+	else
+		return (ft_strchr(++s, c));
+}
+
+char	*ft_strdup(const char *s1)
+{
+	int		i;
+	char	*s;
+
+	i = -1;
+	if (!s1 || !(s = malloc((ft_strlen(s1) + 1) * sizeof(*s))))
+		return (NULL);
+	while (s1[++i])
+		s[i] = s1[i];
+	s[i] = '\0';
+	return (s);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
