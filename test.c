@@ -6,7 +6,7 @@
 /*   By: aroque <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 19:30:38 by aroque            #+#    #+#             */
-/*   Updated: 2020/02/17 17:59:32 by aroque           ###   ########.fr       */
+/*   Updated: 2020/02/19 15:17:30 by aroque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,20 @@
 
 int	main(int argc, char *argv[])
 {
+	int i;
 	int file;
 	char *line;
 
-	if (argc == 2)
+	i = 0;
+	if (argc == 3)
 	{
 		file = open(argv[1], O_RDONLY);
-		get_next_line(file, &line);
-		printf("%s\n", line);
-		free(line);
-		get_next_line(file, &line);
-		printf("%s\n", line);
-		free(line);
+		while (i < atoi(argv[2]))
+		{
+			get_next_line(file, &line);
+			printf("%s\n", line);
+			free(line);
+			i++;
+		}
 	}
 }
