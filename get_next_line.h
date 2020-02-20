@@ -6,7 +6,7 @@
 /*   By: aroque <aroque@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 11:12:57 by aroque            #+#    #+#             */
-/*   Updated: 2020/02/19 16:16:13 by aroque           ###   ########.fr       */
+/*   Updated: 2020/02/20 10:12:52 by aroque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+
+# define GNL_SUCCESS	1
+# define GNL_FAILURE	-1
+# define GNL_EOF		0
 
 # define LBREAK	'\n'
 
