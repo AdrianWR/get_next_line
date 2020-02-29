@@ -6,7 +6,7 @@
 /*   By: aroque <aroque@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 11:12:57 by aroque            #+#    #+#             */
-/*   Updated: 2020/02/20 10:12:52 by aroque           ###   ########.fr       */
+/*   Updated: 2020/02/29 19:33:15 by aroque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define GNL_EOF		0
 
 # define LBREAK	'\n'
+# define STR_EMPTY ""
 
 int		get_next_line(int fd, char **line);
 char	*ft_strchr(const char *s, int c);
