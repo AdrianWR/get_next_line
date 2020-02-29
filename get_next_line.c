@@ -6,7 +6,7 @@
 /*   By: aroque <aroque@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 11:50:29 by aroque            #+#    #+#             */
-/*   Updated: 2020/02/24 19:39:02 by adrian           ###   ########.fr       */
+/*   Updated: 2020/02/29 19:16:45 by aroque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,25 @@ static int	print_line(int rd, char **heap, char **line)
 		return (GNL_FAILURE);
 	else if (rd == 0 && *heap[0] == '\0')
 	{
+		*line = ft_strdup("");
 		ft_strdel(heap);
 		return (GNL_EOF);
 	}
 	while ((*heap)[i] != LBREAK && (*heap)[i] != '\0')
 		i++;
-	*line = ft_substr(*heap, 0, i);
-	tmp = ft_strdup(*heap + i + 1);
-	free(*heap);
-	*heap = tmp;
-	if ((*heap)[0] == '\0')
+	if ((*heap)[i] == LBREAK)
+	{
+		*line = ft_substr(*heap, 0, i);
+		tmp = ft_strdup(*heap + i + 1);
+		free(*heap);
+		*heap = tmp;
+	}
+	else
+	{
+		*line = ft_strdup(*heap);
 		ft_strdel(heap);
+		return (GNL_EOF);
+	}
 	return (GNL_SUCCESS);
 }
 
@@ -50,24 +58,23 @@ int	get_next_line(int fd, char **line)
 	int			rd;
 	char		*tmp;
 	char		*buffer;
-	static char	*heap[4096];
+	static char	*heap[OPEN_MAX];
 
 	tmp = NULL;
-	if (fd < 0 || !line)
+	if (fd < 0 || !line || BUFFER_SIZE < 1)
 		return (GNL_FAILURE);
 	if (!(heap[fd]))
 	{
-		if (!(heap[fd] = malloc(sizeof(**heap))))
+		if (!(heap[fd] = ft_strdup("")))
 			return (GNL_FAILURE);
-		heap[fd][0] = '\0';
 	}
 	if (!(buffer = malloc((BUFFER_SIZE + 1) * sizeof(*buffer))))
 		return (GNL_FAILURE);
 	while ((rd = read(fd, buffer, BUFFER_SIZE)) > 0)
-		{
+	{
 		buffer[rd] = '\0';
 		tmp = ft_strjoin(heap[fd], buffer);
-		free(heap[fd]);
+		ft_strdel(&heap[fd]);
 		heap[fd] = tmp;
 		if (ft_strchr(buffer, LBREAK))
 			break;
